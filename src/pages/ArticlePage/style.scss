@@ -22,4 +22,25 @@
   .date {
     color: #a3a3a3;
   }
+
+  .back {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    .divider {
+      width: 100%;
+    }
+
+    .link {
+      white-space: nowrap;
+      padding: 0 0.3rem;
+    }
+  }
+
+  .navigation {
+    text-decoration: none;
+    color: cornflowerblue;
+  }
 }

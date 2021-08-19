@@ -2,7 +2,9 @@ import Article from "../models/Article";
 
 export interface ArticlesProps {
   getArticles: () => Article[];
-  getArticle: (id: string) => Article | null;
+  getArticle: (
+    id: string
+  ) => { article: Article; prev: string; next: string } | null;
 }
 
 export const useArticles = (): ArticlesProps => {
@@ -18,10 +20,18 @@ export const useArticles = (): ArticlesProps => {
     return articles;
   };
 
-  const getArticle = (id: string, active = true): Article | null => {
-    for (const article of getArticles(active)) {
-      if (article.id === id) {
-        return article;
+  const getArticle = (
+    id: string,
+    active = true
+  ): { article: Article; prev: string; next: string } | null => {
+    const articles = getArticles(active);
+    for (let i = 0; i < articles.length; i++) {
+      if (articles[i].id === id) {
+        return {
+          article: articles[i],
+          prev: i > 0 ? articles[i - 1].id : "",
+          next: i < articles.length - 1 ? articles[i + 1].id : "",
+        };
       }
     }
 
