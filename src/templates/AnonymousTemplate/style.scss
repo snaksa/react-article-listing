@@ -1,0 +1,16 @@
+.anonymous-template-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  .heading {
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .content {
+    width: 100%;
+  }
+}

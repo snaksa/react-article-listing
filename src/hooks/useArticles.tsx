@@ -14,7 +14,8 @@ export const useArticles = (): ArticlesProps => {
         details: {
           [Languages.en]: {
             title: "Title EN 1",
-            content: "Content EN 1",
+            content:
+              "Content EN 1 text text text text text text text text text text text text text text text text text text text text text text text",
           },
           [Languages.de]: {
             title: "Title DE 1",

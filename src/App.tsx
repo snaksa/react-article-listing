@@ -1,13 +1,14 @@
 import React from "react";
 import "./App.scss";
-import ListingPage from "./pages/ListingPage/ListingPage";
-import ArticlePage from "./pages/ArticlePage";
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
 } from "react-router-dom";
+import AnonymousTemplate from "./templates/AnonymousTemplate/AnonymousTemplate";
+import ArticlePage from "./pages/ArticlePage/ArticlePage";
+import ListingPage from "./pages/ListingPage/ListingPage";
 import { Languages } from "./enums/Languages";
 
 function App(): JSX.Element {
@@ -15,17 +16,23 @@ function App(): JSX.Element {
     <div className="app-wrapper">
       <div className="app-content">
         <Router>
-          <Switch>
-            <Route path={"/:lang/articles/:id"}>
-              <ArticlePage />
-            </Route>
+          <div className="content">
+            <Switch>
+              <Route path={"/:lang/articles/:id"}>
+                <AnonymousTemplate>
+                  <ArticlePage />
+                </AnonymousTemplate>
+              </Route>
 
-            <Route path={"/:lang"}>
-              <ListingPage />
-            </Route>
+              <Route path={"/:lang"}>
+                <AnonymousTemplate>
+                  <ListingPage />
+                </AnonymousTemplate>
+              </Route>
 
-            <Redirect from={"/"} to={`/${Languages.en}`} />
-          </Switch>
+              <Redirect from={"/"} to={`/${Languages.en}`} />
+            </Switch>
+          </div>
         </Router>
       </div>
     </div>
