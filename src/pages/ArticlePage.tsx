@@ -2,32 +2,31 @@ import React, { useEffect, useState } from "react";
 import { useArticles } from "../hooks/useArticles";
 import Article from "../models/Article";
 import LanguageSelector from "../components/LanguageSelector";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { Languages } from "../enums/Languages";
 import { useLanguage } from "../hooks/useLanguage";
 
-export default function ListingPage(): JSX.Element {
+export default function ArticlePage(): JSX.Element {
   const history = useHistory();
+  const { id } = useParams<{ id: string }>();
   const language = useLanguage();
-  const { getArticles } = useArticles();
+  const { getArticle } = useArticles();
 
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [article, setArticle] = useState<Article | null>(null);
 
   useEffect(() => {
-    setArticles(getArticles());
-  }, []);
+    setArticle(getArticle(id));
+  }, [id]);
 
   const onLanguageChange = (language: Languages) => {
-    history.push(`/${language}`);
+    history.push(`/${language}/articles/${id}`);
   };
 
   return (
     <div>
       <LanguageSelector onChange={onLanguageChange} language={language} />
       <div>Language: {language}</div>
-      {articles.map((article) => {
-        return <div key={article.id}>{article.details[language].title}</div>;
-      })}
+      {article ? article.details[language].title : "Article not found"}
     </div>
   );
 }

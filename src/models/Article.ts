@@ -5,11 +5,13 @@ interface ArticleDetails {
   content: string;
 }
 
-type DetailsLanguages = Record<keyof typeof Languages, ArticleDetails>;
-
 export default interface Article {
   id: string;
-  details: DetailsLanguages;
+  details: {
+    [Languages.en]: ArticleDetails;
+    [Languages.de]: ArticleDetails;
+    [Languages.bg]: ArticleDetails;
+  };
   date: string;
   isActive: boolean;
 }

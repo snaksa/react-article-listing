@@ -1,19 +1,24 @@
 import React from "react";
-import { Languages } from "../enums/Languages";
+import { Languages, translateLanguage } from "../enums/Languages";
 
 interface LanguageSelectorProps {
   onChange: (language: Languages) => void;
+  language: Languages;
 }
 
 export default function LanguageSelector({
   onChange,
+  language,
 }: LanguageSelectorProps): JSX.Element {
   return (
     <div>
-      <select onChange={(e) => onChange(e.target.value as Languages)}>
-        <option value={Languages.EN}>English</option>
-        <option value={Languages.DE}>German</option>
-        <option value={Languages.BG}>Bulgarian</option>
+      <select
+        value={language}
+        onChange={(e) => onChange(e.target.value as Languages)}
+      >
+        <option value={Languages.en}>{translateLanguage(Languages.en)}</option>
+        <option value={Languages.de}>{translateLanguage(Languages.de)}</option>
+        <option value={Languages.bg}>{translateLanguage(Languages.bg)}</option>
       </select>
     </div>
   );

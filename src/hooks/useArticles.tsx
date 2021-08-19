@@ -2,25 +2,25 @@ import Article from "../models/Article";
 import { Languages } from "../enums/Languages";
 
 export interface ArticlesProps {
-  getArticles: (page: number) => Article[];
+  getArticles: () => Article[];
+  getArticle: (id: string) => Article | null;
 }
 
 export const useArticles = (): ArticlesProps => {
-  const getArticles = (page = 1): Article[] => {
-    console.log("page", page);
+  const getArticles = (): Article[] => {
     return [
       {
         id: "1",
         details: {
-          [Languages.EN]: {
+          [Languages.en]: {
             title: "Title EN 1",
             content: "Content EN 1",
           },
-          [Languages.DE]: {
+          [Languages.de]: {
             title: "Title DE 1",
             content: "Content DE 1",
           },
-          [Languages.BG]: {
+          [Languages.bg]: {
             title: "Title BG 1",
             content: "Content BG 1",
           },
@@ -31,5 +31,15 @@ export const useArticles = (): ArticlesProps => {
     ];
   };
 
-  return { getArticles };
+  const getArticle = (id: string): Article | null => {
+    for (const article of getArticles()) {
+      if (article.id === id) {
+        return article;
+      }
+    }
+
+    return null;
+  };
+
+  return { getArticles, getArticle };
 };
