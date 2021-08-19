@@ -25,10 +25,29 @@ export const useArticles = (): ArticlesProps => {
             content: "Content BG 1",
           },
         },
-        date: "2020-02-02 12:12:12",
+        date: Date.now(),
         isActive: true,
       },
-    ];
+      {
+        id: "2",
+        details: {
+          [Languages.en]: {
+            title: "Title EN 2",
+            content: "Content EN 2",
+          },
+          [Languages.de]: {
+            title: "Title DE 2",
+            content: "Content DE 2",
+          },
+          [Languages.bg]: {
+            title: "Title BG 2",
+            content: "Content BG 2",
+          },
+        },
+        date: Date.now(),
+        isActive: true,
+      },
+    ].filter((article) => article.isActive);
   };
 
   const getArticle = (id: string): Article | null => {

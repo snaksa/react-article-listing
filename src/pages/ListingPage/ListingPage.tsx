@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useArticles } from "../hooks/useArticles";
-import Article from "../models/Article";
-import LanguageSelector from "../components/LanguageSelector";
 import { useHistory } from "react-router-dom";
-import { Languages } from "../enums/Languages";
-import { useLanguage } from "../hooks/useLanguage";
+import { useArticles } from "../../hooks/useArticles";
+import { useLanguage } from "../../hooks/useLanguage";
+import Article from "../../models/Article";
+import { Languages } from "../../enums/Languages";
+import LanguageSelector from "../../components/LanguageSelector";
+import ArticlePreview from "../../components/ArticlePreview/ArticlePreview";
+import "./style.scss";
 
 export default function ListingPage(): JSX.Element {
   const history = useHistory();
@@ -22,11 +24,16 @@ export default function ListingPage(): JSX.Element {
   };
 
   return (
-    <div>
+    <div className="listing-page-wrapper">
       <LanguageSelector onChange={onLanguageChange} language={language} />
-      <div>Language: {language}</div>
       {articles.map((article) => {
-        return <div key={article.id}>{article.details[language].title}</div>;
+        return (
+          <ArticlePreview
+            key={article.id}
+            article={article}
+            language={language}
+          />
+        );
       })}
     </div>
   );

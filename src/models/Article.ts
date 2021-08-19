@@ -12,6 +12,6 @@ export default interface Article {
     [Languages.de]: ArticleDetails;
     [Languages.bg]: ArticleDetails;
   };
-  date: string;
+  date: number;
   isActive: boolean;
 }
