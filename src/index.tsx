@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import getDummyArticles from "./dummyData";
+
+localStorage.setItem("articles", JSON.stringify(getDummyArticles()));
 
 ReactDOM.render(
   <React.StrictMode>
