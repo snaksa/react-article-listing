@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, NavLink } from "react-router-dom";
 import { Languages } from "../../enums/Languages";
 import LanguageSelector from "../../components/LanguageSelector";
 import { useLanguage } from "../../hooks/useLanguage";
@@ -28,6 +28,11 @@ function AnonymousTemplate({
 
   return (
     <div className="anonymous-template-wrapper">
+      <div className="header">
+        <NavLink to={"/"} className="navigation">
+          Administration
+        </NavLink>
+      </div>
       <LanguageSelector onChange={onLanguageChange} language={language} />
       <div className="heading">Articles listing</div>
       <div className="content">{children}</div>

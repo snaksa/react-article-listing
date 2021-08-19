@@ -4,6 +4,15 @@
   justify-content: flex-start;
   align-items: flex-end;
 
+  .header {
+    padding-bottom: 1rem;
+
+    .navigation {
+      text-decoration: none;
+      color: cornflowerblue;
+    }
+  }
+
   .heading {
     width: 100%;
     text-align: center;
