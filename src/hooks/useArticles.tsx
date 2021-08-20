@@ -1,7 +1,7 @@
 import Article from "../models/Article";
 
 export interface ArticlesProps {
-  getArticles: () => Article[];
+  getArticles: (active?: boolean) => Article[];
   getArticle: (
     id: string
   ) => { article: Article; prev: string; next: string } | null;

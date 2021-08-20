@@ -10,6 +10,7 @@ import AnonymousTemplate from "./templates/AnonymousTemplate/AnonymousTemplate";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import ListingPage from "./pages/ListingPage/ListingPage";
 import { Languages } from "./enums/Languages";
+import AdminListingPage from "./pages/AdminiListingPage/AdminListingPage";
 
 function App(): JSX.Element {
   return (
@@ -22,6 +23,10 @@ function App(): JSX.Element {
                 <AnonymousTemplate>
                   <ArticlePage />
                 </AnonymousTemplate>
+              </Route>
+
+              <Route path={"/:lang/administration"}>
+                <AdminListingPage />
               </Route>
 
               <Route path={"/:lang"}>
